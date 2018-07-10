@@ -131,7 +131,11 @@ public class HomeActivity extends AppCompatActivity {
         photoFile = getPhotoFileUri(photoFileName + ".jpg");
 
 
-
+        // wrap File object into a content provider
+        // required for API >= 24;
+        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -197,11 +201,7 @@ public class HomeActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                // wrap File object into a content provider
-                // required for API >= 24;
-                // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-                Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
-                data.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
 
                 // Load the taken image into a preview
                 ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
