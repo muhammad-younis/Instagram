@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="222dp"
+        android:ems="10"
+        android:hint="Enter a Description"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="72dp"
+        android:text="POST" />
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnPost"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-71dp"
+        android:text="REFRESH" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="LOG OUT" />
+
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnPost"
+        android:layout_centerHorizontal="true"
+        android:text="CAMERA" />
+
+    <ImageView
+        android:id="@+id/ivPreview"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        app:srcCompat="@android:color/black" />
+</RelativeLayout>

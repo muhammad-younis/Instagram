@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-58dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="138dp"
+        android:text="LOG IN"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <Button
+        android:id="@+id/buttonSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLogin"
+        android:layout_centerHorizontal="true"
+        android:text="SIGN UP" />
+
+</RelativeLayout>
