@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (e == null)
                 {
                     Log.d("LoginActivity", "Login successful!");
-                    final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(LoginActivity.this, TimelineActivity.class);
                     startActivity(intent);
                     finish();
                 }
