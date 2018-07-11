@@ -84,6 +84,7 @@ public class TimelineActivity extends AppCompatActivity {
     private void grabTopPosts()
     {
         final Post.Query postsQuery = new Post.Query();
+        postsQuery.orderByDescending("createdAt");
 
         postsQuery.getTop().withUser();
         postsQuery.findInBackground(new FindCallback<Post>() {
