@@ -174,7 +174,7 @@ public class HomeActivity extends AppCompatActivity {
                 // by this point we have the camera photo on disk
                 Bitmap rawTakenImage = BitmapFactory.decodeFile(photoFile.getPath());
                 // See BitmapScaler.java: https://gist.github.com/nesquena/3885707fd3773c09f1bb
-                Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 190);
+                Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 500);
 
                 // Configure byte output stream
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
