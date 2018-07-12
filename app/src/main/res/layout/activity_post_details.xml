@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@+id/scrollView1"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -19,6 +24,7 @@
 
     <TextView
         android:id="@+id/tvHandle"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivProfilePic"
@@ -47,6 +53,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="435dp" />
 
@@ -54,8 +61,25 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="italic"
         android:layout_alignStart="@+id/ivProfilePic"
         android:layout_below="@+id/tvDescription"
         android:layout_marginTop="-5dp"
         android:text="TextView" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/etAddComment"
+        android:layout_below="@+id/etAddComment"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+
+
+
 </RelativeLayout>
+</ScrollView>

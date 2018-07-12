@@ -40,4 +40,7 @@ dependencies {
     //implementation "com.android.support:appcompat-v7:${supportLibVersion}"
     //implementation "com.android.support:design:${supportLibVersion}"
 
+    implementation 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
+
 }

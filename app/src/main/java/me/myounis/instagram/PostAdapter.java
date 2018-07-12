@@ -1,6 +1,7 @@
 package me.myounis.instagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import org.parceler.Parcels;
 
 import java.util.Date;
 import java.util.List;
@@ -97,14 +100,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             ivPostPic = (ImageView) itemView.findViewById(R.id.ivPostPic);
 
             tvTimestamp = (TextView)itemView.findViewById(R.id.tvTimestamp);
-        }
 
+            itemView.setOnClickListener(this);
+
+
+        }
 
         @Override
-        public void onClick(View view) {
-            // do nothing
-            // TODO
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                Post post = mPosts.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, PostDetailsActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra("post", Parcels.wrap(post));
+                // show the activity
+                context.startActivity(intent);
+            }
         }
+
     }
 
     public String getRelativeTimeAgo(Date date){
