@@ -3,6 +3,7 @@ package me.myounis.instagram;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Date;
 import java.util.List;
 
 import me.myounis.instagram.model.Post;
@@ -50,6 +52,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         holder.tvHandle.setText(post.getUser().getUsername());
         holder.tvDescription.setText(post.getDescription());
 
+        Date date = post.getCreatedAt();
+        holder.tvTimestamp.setText(getRelativeTimeAgo(date));
+
 
         Glide.with(context)
                 .load(post.getImage().getUrl())
@@ -81,6 +86,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         public TextView tvHandle;
         public TextView tvDescription;
         public ImageView ivPostPic;
+        public TextView tvTimestamp;
 
         public ViewHolder(View itemView)
         {
@@ -89,19 +95,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             tvHandle = (TextView) itemView.findViewById(R.id.tvHandle);
             tvDescription = (TextView) itemView.findViewById(R.id.tvDescription);
             ivPostPic = (ImageView) itemView.findViewById(R.id.ivPostPic);
+
+            tvTimestamp = (TextView)itemView.findViewById(R.id.tvTimestamp);
         }
 
 
         @Override
         public void onClick(View view) {
             // do nothing
+            // TODO
         }
     }
 
+    public String getRelativeTimeAgo(Date date){
+        Long datems = date.getTime();
+        return DateUtils.getRelativeTimeSpanString(datems, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+    }
 
     @Override
     public int getItemCount()
     {
         return mPosts.size();
     }
+
 }

@@ -1,13 +1,14 @@
 package me.myounis.instagram;
 
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -17,9 +18,16 @@ import java.util.List;
 
 import me.myounis.instagram.model.Post;
 
-public class TimelineActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link TimelineFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the { @link TimelineFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class TimelineFragment extends Fragment {
 
-    Button createButton;
 
     private PostAdapter postAdapter;
     private ArrayList<Post> posts;
@@ -28,36 +36,48 @@ public class TimelineActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeContainer;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeline);
+    private OnFragmentInteractionListener mListener;
 
+    public TimelineFragment() {
+        // Required empty public constructor
+    }
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_timeline, container, false);
+    }
+
+    // This event is triggered soon after onCreateView().
+    // onViewCreated() is only called if the view returned from onCreateView() is non-null.
+    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // first we need to find the RecyclerView
-        rvPosts = (RecyclerView) findViewById(R.id.rvPosts);
+        rvPosts = (RecyclerView) view.findViewById(R.id.rvPosts);
         // initialize the lit of tweets (the data source for the recycler view)
         posts = new ArrayList<>();
         // construct the adapter
         postAdapter = new PostAdapter(posts);
         // set the contents of the adapter
-        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.setAdapter(postAdapter);
 
         // try to grab data from parse
         grabTopPosts();
 
-        createButton = (Button) findViewById(R.id.btnCreate);
-
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Intent intent = new Intent(TimelineActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         // Lookup the swipe container view
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -78,7 +98,28 @@ public class TimelineActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+    }
 
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 
     private void grabTopPosts()
