@@ -36,13 +36,6 @@
         android:layout_marginTop="-71dp"
         android:text="REFRESH" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="LOG OUT" />
 
     <Button
         android:id="@+id/btnCamera"

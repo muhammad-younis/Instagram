@@ -23,6 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().hide();
+
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             final Intent intent = new Intent(LoginActivity.this, MainActivity.class);

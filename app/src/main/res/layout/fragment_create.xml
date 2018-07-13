@@ -39,5 +39,5 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnPost"
         android:layout_alignStart="@+id/btnPost"
-        android:text="Button" />
+        android:text="Take a Photo" />
 </RelativeLayout>

@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/gradient">
+
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etPassword"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-58dp"
+        android:layout_marginTop="137dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -25,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="195dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -36,9 +38,8 @@
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/buttonSignup"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="138dp"
         android:text="LOG IN"
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="145dp" />
@@ -47,8 +48,17 @@
         android:id="@+id/buttonSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonLogin"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="164dp"
         android:text="SIGN UP" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/nux_dayone_landing_logo" />
 
 </RelativeLayout>

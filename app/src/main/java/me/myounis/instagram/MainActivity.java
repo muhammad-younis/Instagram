@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.io.File;
@@ -26,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //getActionBar().hide();
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+        // setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
         // define your fragments here
@@ -33,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragment1 = new TimelineFragment();
         fragment2 = new CreateFragment();
-        //final Fragment fragment3 = new ThirdFragment();
+        final Fragment fragment3 = new ProfileFragment();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flContainer, fragment1).commit();
@@ -54,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.flContainer, fragment2).commit();
                         return true;
                     case R.id.action_profile:
-                        /*fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction = fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.flContainer, fragment3).commit();
-                        return true;*/
+                        return true;
                 }
                 return true;
             }

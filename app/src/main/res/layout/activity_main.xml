@@ -8,7 +8,8 @@
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp">
 
     </FrameLayout>
 
@@ -19,4 +20,25 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         app:menu="@menu/menu_bottom_navigation" />
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff">
+
+        <ImageView
+            android:id="@+id/logoXmarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/nav_logo_whiteout" />
+
+    </android.support.v7.widget.Toolbar>
+
+
 </RelativeLayout>
