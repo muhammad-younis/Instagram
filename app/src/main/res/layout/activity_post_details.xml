@@ -1,85 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@+id/scrollView1"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fillViewport="true"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/ivProfilePic"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ivPostPic"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        app:srcCompat="@android:color/black"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="60dp">
 
-    <TextView
-        android:id="@+id/tvHandle"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivProfilePic"
-        android:layout_toEndOf="@+id/ivProfilePic"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="26dp" />
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/ivPostPic"
-        android:layout_width="355dp"
-        android:layout_height="355dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
-        app:srcCompat="@android:color/darker_gray"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="80dp" />
+            <ImageView
+                android:id="@+id/ivProfilePic"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/ivPostPic"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@android:color/black"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPostPic"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
-        android:text="TextView"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="435dp" />
+            <TextView
+                android:id="@+id/tvHandle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ivProfilePic"
+                android:layout_toEndOf="@+id/ivProfilePic"
+                android:text="TextView"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="81dp"
+                tools:layout_editor_absoluteY="26dp" />
 
-    <TextView
-        android:id="@+id/tvTimestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:layout_alignStart="@+id/ivProfilePic"
-        android:layout_below="@+id/tvDescription"
-        android:layout_marginTop="-5dp"
-        android:text="TextView" />
+            <ImageView
+                android:id="@+id/ivPostPic"
+                android:layout_width="355dp"
+                android:layout_height="355dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="63dp"
+                app:srcCompat="@android:color/darker_gray"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="80dp" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/comments"
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="355dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivPostPic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="15dp"
+                tools:layout_editor_absoluteY="435dp" />
+
+            <TextView
+                android:id="@+id/tvTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/ivProfilePic"
+                android:layout_below="@+id/tvDescription"
+                android:layout_marginTop="-5dp"
+                android:text="TextView"
+                android:textStyle="italic" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tvTimestamp"
+                android:layout_below="@+id/tvTimestamp"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/etAddComment"
-        android:layout_below="@+id/etAddComment"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-
-
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/myEditText"
+            android:background="#FFFFFF" />
+    </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>
-</ScrollView>

@@ -3,15 +3,20 @@ package me.myounis.instagram;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.parceler.Parcels;
 
@@ -33,7 +38,7 @@ public class PostDetailsActivity extends AppCompatActivity {
     ImageView ivPostPic;
     LinearLayout llComments;
     EditText etAddComment;
-    Button btnComment;
+    Post post;
 
 
     @Override
@@ -46,12 +51,12 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
         ivPostPic = (ImageView) findViewById(R.id.ivPostPic);
         llComments = (LinearLayout) findViewById(R.id.comments);
-        etAddComment = (EditText) findViewById(R.id.etAddComment);
+        etAddComment = (EditText) findViewById(R.id.myEditText);
         //btnComment = (Button) findViewById(R.id.btnComment);
 
 
         // TODO assign all of the items of a post
-        Post post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
+        post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
 
 
         // populate each of the views, with their data
@@ -115,4 +120,39 @@ public class PostDetailsActivity extends AppCompatActivity {
         Long datems = date.getTime();
         return DateUtils.getRelativeTimeSpanString(datems, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.comment_bottom_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_feed) {
+            Toast.makeText(PostDetailsActivity.this, "Action clicked", Toast.LENGTH_LONG).show();
+            String actual_comment = etAddComment.getText().toString();
+            String username = ParseUser.getCurrentUser().getUsername();
+            String comment_to_add = username + ": " + actual_comment;
+            post.add("comments", comment_to_add);
+            post.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    // just do nothing
+                }
+            });
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+
