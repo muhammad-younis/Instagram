@@ -59,9 +59,14 @@ public class PostDetailsActivity extends AppCompatActivity {
         //btnComment = (Button) findViewById(R.id.btnComment);
 
 
+
+
+        // TODO assign all of the items of a post
+        post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
+
         ParseUser user = ParseUser.getCurrentUser();
 
-        ParseFile profilePic = user.getParseFile("profilepic");
+        ParseFile profilePic = post.getUser().getParseFile("profilepic");
 
         if (profilePic != null)
         {
@@ -71,11 +76,6 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .into(ivProfilePic);
 
         }
-
-        // TODO assign all of the items of a post
-        post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
-
-
         // populate each of the views, with their data
         tvHandle.setText(post.getUser().getUsername());
         tvDescription.setText(post.getDescription());
