@@ -43,4 +43,8 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
 
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
 }

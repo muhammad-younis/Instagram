@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -36,6 +37,7 @@ public class PostDetailsActivity extends AppCompatActivity {
     TextView tvDescription;
     TextView tvTimestamp;
     ImageView ivPostPic;
+    ImageView ivProfilePic;
     LinearLayout llComments;
     EditText etAddComment;
     Post post;
@@ -53,8 +55,22 @@ public class PostDetailsActivity extends AppCompatActivity {
         ivPostPic = (ImageView) findViewById(R.id.ivPostPic);
         llComments = (LinearLayout) findViewById(R.id.comments);
         etAddComment = (EditText) findViewById(R.id.myEditText);
+        ivProfilePic = (ImageView) findViewById(R.id.ivProfilePic);
         //btnComment = (Button) findViewById(R.id.btnComment);
 
+
+        ParseUser user = ParseUser.getCurrentUser();
+
+        ParseFile profilePic = user.getParseFile("profilepic");
+
+        if (profilePic != null)
+        {
+            String imageUrl = profilePic.getUrl();
+            Glide.with(this)
+                    .load(imageUrl)
+                    .into(ivProfilePic);
+
+        }
 
         // TODO assign all of the items of a post
         post = (Post) Parcels.unwrap(getIntent().getParcelableExtra("post"));
@@ -138,7 +154,7 @@ public class PostDetailsActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_feed) {
-            Toast.makeText(PostDetailsActivity.this, "Action clicked", Toast.LENGTH_LONG).show();
+            Toast.makeText(PostDetailsActivity.this, "Comment added!", Toast.LENGTH_LONG).show();
             String actual_comment = etAddComment.getText().toString();
             String username = ParseUser.getCurrentUser().getUsername();
             String comment_to_add = username + ": " + actual_comment;

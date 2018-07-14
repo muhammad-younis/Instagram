@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
@@ -50,6 +52,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position)
     {
         Post post = mPosts.get(position);
+
+        ParseUser user = ParseUser.getCurrentUser();
+
+        ParseFile profilePic = user.getParseFile("profilepic");
+
+        if (profilePic != null)
+        {
+            String imageUrl = profilePic.getUrl();
+            Glide.with(context)
+                    .load(imageUrl)
+                    .into(holder.ivProfilePic);
+
+        }
 
         // populate each of the views, with their data
         holder.tvHandle.setText(post.getUser().getUsername());

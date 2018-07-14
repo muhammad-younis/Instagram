@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_feed"
         android:enabled="true"
-        android:icon="@drawable/instagram_home_outline_24"
+        android:icon="@drawable/free_plus_sign"
         app:showAsAction="always"
         android:title="Feed" />
 </menu>
