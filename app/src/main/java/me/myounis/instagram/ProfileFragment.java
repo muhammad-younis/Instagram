@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -46,6 +47,7 @@ public class ProfileFragment extends Fragment {
     File photoFile;
     ParseUser user;
     ImageView ivProfilePic;
+    TextView username;
 
     public final String APP_TAG = "Instagram";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
@@ -75,8 +77,11 @@ public class ProfileFragment extends Fragment {
         logoutButton = (Button) view.findViewById(R.id.exit);
         profileButton = (Button) view.findViewById(R.id.btnProfilePic);
         ivProfilePic = (ImageView) view.findViewById(R.id.ivProfilePic);
+        username = (TextView) view.findViewById(R.id.textView);
 
         user = ParseUser.getCurrentUser();
+
+        username.setText(user.getUsername());
 
         ParseFile profilePic = user.getParseFile("profilepic");
 
